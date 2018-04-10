@@ -1,7 +1,6 @@
 package Planer;
 
-
-import Flight.SelectCountry;
+import Flight.views.Main;
 import Hotel.BookHotel;
 import Trip.BookTrip;
 
@@ -17,7 +16,7 @@ import Trip.BookTrip;
  */
 public class TripPlannerUI extends javax.swing.JFrame {
     
-    
+    private Main main;
     private boolean isFlight = false;
     private boolean isHotel = false;
     private boolean isTour = false;
@@ -27,6 +26,8 @@ public class TripPlannerUI extends javax.swing.JFrame {
      * Creates new form TripPlannerUI
      */
     public TripPlannerUI() {
+        
+        this.main = new Main();
         
         initComponents();
     }
@@ -159,7 +160,8 @@ public class TripPlannerUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(isFlight){ // if check box is checked
             this.setVisible(false);
-            SelectCountry a = new SelectCountry(isHotel, isTour);
+            Main a = new Main();
+            a.loadSearchView();
             a.setVisible(true);
        }
         else if(isHotel){
