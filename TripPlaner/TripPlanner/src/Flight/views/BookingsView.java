@@ -44,6 +44,10 @@ public final class BookingsView extends javax.swing.JPanel {
         this.df = new SimpleDateFormat("dd. MMM yyyy");
         this.tf = new SimpleDateFormat("HH:mm:ss");
         this.selectedSeats = new ArrayList<>();
+        this.jButton1 = jButton1;
+        this.jButton2 = jButton2;
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
         loadInfo();
     }
     
@@ -60,6 +64,7 @@ public final class BookingsView extends javax.swing.JPanel {
         jFlightArrivalTime.setText(this.tf.format(arrivalTime));
         renderSeats();
     }
+            
     
     /**
      * Renders seats into the jSeatContainer panel
@@ -122,6 +127,8 @@ public final class BookingsView extends javax.swing.JPanel {
         jSeatContainer = new javax.swing.JPanel();
         jPrice = new javax.swing.JLabel();
         jErrorMessage = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -172,6 +179,12 @@ public final class BookingsView extends javax.swing.JPanel {
 
         jErrorMessage.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton1.setText("Nýskráning");
+
+        jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton2.setText("Innskráning");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +199,12 @@ public final class BookingsView extends javax.swing.JPanel {
                                 .addComponent(jBookSeats))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
-                                .addComponent(jErrorMessage)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jErrorMessage)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(90, 90, 90)
+                                        .addComponent(jButton2)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -228,6 +246,10 @@ public final class BookingsView extends javax.swing.JPanel {
                     .addComponent(jFlightDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBookSeats)
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -245,11 +267,11 @@ public final class BookingsView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jErrorMessage))
-                        .addContainerGap(56, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBookSeats)
-                        .addGap(34, 34, 34))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addGap(19, 19, 19))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -268,6 +290,8 @@ public final class BookingsView extends javax.swing.JPanel {
         User loggedUser = parent.getLoggedInUser();
         if(loggedUser == null) {
             jErrorMessage.setText("Þú verður að skrá þig inn til að bóka");
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
             return;
         }
   
@@ -304,6 +328,8 @@ public final class BookingsView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBackToSearchView;
     private javax.swing.JButton jBookSeats;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jErrorMessage;
     private javax.swing.JLabel jFlightArrivalTime;
     private javax.swing.JLabel jFlightArrivalTimeLabel;
