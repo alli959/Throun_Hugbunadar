@@ -44,10 +44,10 @@ public final class BookingsView extends javax.swing.JPanel {
         this.df = new SimpleDateFormat("dd. MMM yyyy");
         this.tf = new SimpleDateFormat("HH:mm:ss");
         this.selectedSeats = new ArrayList<>();
-        this.jButton1 = jButton1;
-        this.jButton2 = jButton2;
-        jButton1.setVisible(false);
-        jButton2.setVisible(false);
+        this.Nyskraning = Nyskraning;
+        this.Innskraning = Innskraning;
+        Nyskraning.setVisible(false);
+        Innskraning.setVisible(false);
         loadInfo();
     }
     
@@ -127,8 +127,8 @@ public final class BookingsView extends javax.swing.JPanel {
         jSeatContainer = new javax.swing.JPanel();
         jPrice = new javax.swing.JLabel();
         jErrorMessage = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Nyskraning = new javax.swing.JButton();
+        Innskraning = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -179,11 +179,21 @@ public final class BookingsView extends javax.swing.JPanel {
 
         jErrorMessage.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jButton1.setText("Nýskráning");
+        Nyskraning.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        Nyskraning.setText("Nýskráning");
+        Nyskraning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NyskraningActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jButton2.setText("Innskráning");
+        Innskraning.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        Innskraning.setText("Innskráning");
+        Innskraning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InnskraningActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,9 +212,9 @@ public final class BookingsView extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jErrorMessage)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(Nyskraning)
                                         .addGap(90, 90, 90)
-                                        .addComponent(jButton2)))))
+                                        .addComponent(Innskraning)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -269,8 +279,8 @@ public final class BookingsView extends javax.swing.JPanel {
                             .addComponent(jErrorMessage))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(Nyskraning)
+                            .addComponent(Innskraning))
                         .addGap(19, 19, 19))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -290,8 +300,8 @@ public final class BookingsView extends javax.swing.JPanel {
         User loggedUser = parent.getLoggedInUser();
         if(loggedUser == null) {
             jErrorMessage.setText("Þú verður að skrá þig inn til að bóka");
-            jButton1.setVisible(true);
-            jButton2.setVisible(true);
+            Nyskraning.setVisible(true);
+            Innskraning.setVisible(true);
             return;
         }
   
@@ -315,6 +325,14 @@ public final class BookingsView extends javax.swing.JPanel {
         parent.loadFlightInfoView(this.flight);
     }//GEN-LAST:event_bookSeats
 
+    private void NyskraningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NyskraningActionPerformed
+        parent.loadLoginView("Nýskráning");
+    }//GEN-LAST:event_NyskraningActionPerformed
+
+    private void InnskraningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InnskraningActionPerformed
+        parent.loadLoginView("Innskráning");
+    }//GEN-LAST:event_InnskraningActionPerformed
+
     
     /**
      * Calculates price of selected seats;
@@ -326,10 +344,10 @@ public final class BookingsView extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Innskraning;
+    private javax.swing.JButton Nyskraning;
     private javax.swing.JButton jBackToSearchView;
     private javax.swing.JButton jBookSeats;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jErrorMessage;
     private javax.swing.JLabel jFlightArrivalTime;
     private javax.swing.JLabel jFlightArrivalTimeLabel;
