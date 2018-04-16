@@ -5,6 +5,10 @@
  */
 package Hotel;
 
+import java.util.ArrayList;
+import java.sql.*;
+import hotelAPI.*;
+
 import Trip.BookTrip;
 
 /**
