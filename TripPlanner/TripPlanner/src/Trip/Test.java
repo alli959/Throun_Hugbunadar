@@ -36,12 +36,14 @@ public class Test {
 
         TourController tc = new TourController();
         //tc.addTour(tour);
+       
         String startDate = "2018-02-16 14:00";
         String endDate = "2018-02-16 15:00";
         Date sd = new Date(2018-1900, 02, 16, 14, 00);
         Date ed = new Date(2018-1900, 02, 16, 15, 00);
         System.out.println(sd);
-        ArrayList<Tour> list = tc.getToursByDate(sd, ed);
+        ArrayList<Tour> list = tc.getAllTours();
+        //ArrayList<Tour> list = tc.getToursByDate(sd, ed);
         //ArrayList<Tour> list2 = tc.getTourRecomendations(list.get(0));
         System.out.println(list.get(0).getTourName());
         //Review rw = rc.getReviewsForTour();
