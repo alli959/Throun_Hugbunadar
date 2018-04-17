@@ -160,6 +160,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     public void loadHotelSearchView() {
+        this.remove(this.searchView);
         this.add(searchView, BorderLayout.CENTER);
         this.pack();
         this.repaint();

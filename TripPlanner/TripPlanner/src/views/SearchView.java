@@ -70,20 +70,21 @@ class SearchView extends javax.swing.JPanel {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jOriginTextField = new javax.swing.JTextField();
-        jDestinationTextField = new javax.swing.JTextField();
-        jOriginLabel = new javax.swing.JLabel();
-        jDestinationLabel = new javax.swing.JLabel();
-        jSubmitSearch = new javax.swing.JButton();
-        jDateField2 = new javax.swing.JFormattedTextField();
-        jDateField1 = new javax.swing.JFormattedTextField();
         jTableContainerScroll = new javax.swing.JScrollPane();
         jTableContainer = new javax.swing.JPanel();
-        jDateLabel1 = new javax.swing.JLabel();
-        jDateLabel2 = new javax.swing.JLabel();
         flightTab = new javax.swing.JButton();
         hotelTab = new javax.swing.JButton();
         tripTab = new javax.swing.JButton();
+        flightSearch = new javax.swing.JPanel();
+        jOriginLabel = new javax.swing.JLabel();
+        jDestinationLabel = new javax.swing.JLabel();
+        jOriginTextField = new javax.swing.JTextField();
+        jDestinationTextField = new javax.swing.JTextField();
+        jDateLabel1 = new javax.swing.JLabel();
+        jDateField1 = new javax.swing.JFormattedTextField();
+        jDateLabel2 = new javax.swing.JLabel();
+        jDateField2 = new javax.swing.JFormattedTextField();
+        jSubmitSearch = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -95,29 +96,6 @@ class SearchView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jOriginLabel.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jOriginLabel.setText("Brottfararstaður:");
-
-        jDestinationLabel.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jDestinationLabel.setText("Áfangastaður:");
-
-        jSubmitSearch.setBackground(new java.awt.Color(204, 204, 255));
-        jSubmitSearch.setFont(new java.awt.Font("Courier New", 1, 11)); // NOI18N
-        jSubmitSearch.setText("Leita");
-        jSubmitSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search(evt);
-            }
-        });
-
-        jDateField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jDateField2.setText("31/12/2018");
-        jDateField2.setToolTipText("dd/MM/yyyy");
-
-        jDateField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jDateField1.setText("01/01/2018");
-        jDateField1.setToolTipText("dd/MM/yyyy");
-
         jTableContainerScroll.setBackground(new java.awt.Color(255, 255, 255));
         jTableContainerScroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTableContainerScroll.setMaximumSize(new java.awt.Dimension(780, 400));
@@ -128,12 +106,6 @@ class SearchView extends javax.swing.JPanel {
         jTableContainer.setAutoscrolls(true);
         jTableContainer.setLayout(new java.awt.BorderLayout());
         jTableContainerScroll.setViewportView(jTableContainer);
-
-        jDateLabel1.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jDateLabel1.setText("Frá:");
-
-        jDateLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jDateLabel2.setText("Til:");
 
         flightTab.setText("Flug");
         flightTab.addActionListener(new java.awt.event.ActionListener() {
@@ -156,77 +128,117 @@ class SearchView extends javax.swing.JPanel {
             }
         });
 
+        jOriginLabel.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jOriginLabel.setText("Brottfararstaður:");
+
+        jDestinationLabel.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jDestinationLabel.setText("Áfangastaður:");
+
+        jDateLabel1.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jDateLabel1.setText("Frá:");
+
+        jDateField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jDateField1.setText("01/01/2018");
+        jDateField1.setToolTipText("dd/MM/yyyy");
+
+        jDateLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jDateLabel2.setText("Til:");
+
+        jDateField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jDateField2.setText("31/12/2018");
+        jDateField2.setToolTipText("dd/MM/yyyy");
+
+        jSubmitSearch.setBackground(new java.awt.Color(204, 204, 255));
+        jSubmitSearch.setFont(new java.awt.Font("Courier New", 1, 11)); // NOI18N
+        jSubmitSearch.setText("Leita");
+        jSubmitSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search(evt);
+            }
+        });
+
+        javax.swing.GroupLayout flightSearchLayout = new javax.swing.GroupLayout(flightSearch);
+        flightSearch.setLayout(flightSearchLayout);
+        flightSearchLayout.setHorizontalGroup(
+            flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(flightSearchLayout.createSequentialGroup()
+                .addGroup(flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(flightSearchLayout.createSequentialGroup()
+                        .addComponent(jOriginLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jOriginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(flightSearchLayout.createSequentialGroup()
+                        .addComponent(jDestinationLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jDestinationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 69, Short.MAX_VALUE))
+            .addGroup(flightSearchLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDateLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jDateLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSubmitSearch)
+                    .addComponent(jDateField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        flightSearchLayout.setVerticalGroup(
+            flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(flightSearchLayout.createSequentialGroup()
+                .addGroup(flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jOriginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jOriginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDestinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDestinationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(flightSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSubmitSearch)
+                .addGap(0, 33, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jTableContainerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jDestinationLabel)
-                                    .addComponent(jDateLabel1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jOriginLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jOriginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDestinationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(jSubmitSearch))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jDateLabel2)
+                                .addComponent(flightTab, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTableContainerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(hotelTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tripTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(flightSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(flightTab, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hotelTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tripTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(flightTab)
-                            .addComponent(hotelTab)
-                            .addComponent(tripTab))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jOriginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jOriginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jDestinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDestinationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jDateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jSubmitSearch)))
-                .addGap(62, 62, 62)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(flightTab)
+                    .addComponent(hotelTab)
+                    .addComponent(tripTab))
+                .addGap(18, 18, 18)
+                .addComponent(flightSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addComponent(jTableContainerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -388,6 +400,7 @@ class SearchView extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel flightSearch;
     private javax.swing.JButton flightTab;
     private javax.swing.JButton hotelTab;
     private javax.swing.JFormattedTextField jDateField1;
